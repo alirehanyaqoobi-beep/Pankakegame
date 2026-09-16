@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ game.title }} - GameHub{% endblock %}
+
+{% block content %}
+<a class="back-link" href="{{ url_for('home') }}">&larr; Back to all games</a>
+
+<h1>{{ game.title }}</h1>
+<p>{{ game.description }}</p>
+
+<div class="game-stage">
+    <!-- Replace this with your game's canvas, iframe, or embedded JS game -->
+    <canvas id="game-canvas" width="640" height="480"></canvas>
+    <p class="placeholder-note">Game goes here. Hook up your game logic in static/js/games/{{ game.slug }}.js</p>
+</div>
+{% endblock %}

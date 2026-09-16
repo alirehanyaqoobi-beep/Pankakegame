@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}GameHub - Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Welcome to GameHub</h1>
+    <p>Pick a game below and start playing.</p>
+</section>
+
+<section class="game-grid">
+    {% for game in games %}
+    <a class="game-card" href="{{ url_for('game_page', slug=game.slug) }}">
+        <img src="{{ url_for('static', filename=game.thumbnail) }}" alt="{{ game.title }}" onerror="this.src='https://via.placeholder.com/300x180?text=Game'" />
+        <h2>{{ game.title }}</h2>
+        <p>{{ game.description }}</p>
+    </a>
+    {% else %}
+    <p>No games yet — add one to the GAMES list in app.py.</p>
+    {% endfor %}
+</section>
+{% endblock %}
